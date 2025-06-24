@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                      MULTIDIMENSIONAL NEWTON METHOD                     %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = NewtonMulti()
   clear all;
   clc; 
@@ -16,7 +20,7 @@ function result = NewtonMulti()
       hessi{contador + 1} = hessiana(x{contador+1});
       contador = contador + 1;
   end 
-resultado.nome = 'Metodo de Newton Multidimensional';
+resultado.nome = 'Multidimensional Newton Method';
 resultado.valor = x{contador};
 result = resultado;
 end
@@ -82,7 +86,7 @@ function result = fibonacci(d,x)
   result = saida;
 end
 
-function result = objetivo(alpha, variavel, z) % recebe alpha, recebe dire??o, recebe z = [x,y]
+function result = objetivo(alpha, variavel, z)
     x = z(1) + alpha*variavel(1);
     y = z(2) + alpha*variavel(2);
     result = x^2 + y^2 + x*y - 3*x;
