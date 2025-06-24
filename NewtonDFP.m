@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                   NEWTON DAVIDON-FLETCHER-POWELL METHOD                 %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = NewtonDFP()
   clear all;
   clc; 
