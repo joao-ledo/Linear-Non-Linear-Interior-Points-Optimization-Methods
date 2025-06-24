@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                             GRADIENT METHOD                             %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = MetodoGradiente()
   clear all;
   clc; 
@@ -14,7 +18,7 @@ function result = MetodoGradiente()
       grad{contador+1} = gradiente(x{contador+1});
       contador = contador + 1;
   end 
-  resultado.nome = 'Metodo do Gradiente';
+  resultado.nome = 'Gradient Method';
   resultado.valor = x{contador};
 result = resultado;
 end
