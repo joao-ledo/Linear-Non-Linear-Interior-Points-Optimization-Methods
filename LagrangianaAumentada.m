@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                       AUGMENTED LAGRANGIAN METHOD                       %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = LagrangianaAumentada()
     clear all;
     clc; 
@@ -22,7 +26,7 @@ function result = LagrangianaAumentada()
         end
         k = k + 1;
     end
-    metodo.nome = 'Metodo da Lagrangiana Aumentada';
+    metodo.nome = 'Augmented Lagrangiana Method';
     metodo.valor = x{k};
     metodo.iteracoes = k;
     %viola(k) = residuo(x(k));
@@ -32,7 +36,7 @@ end
 function result = residuo(x)
     x1 = x(1);
     x2 = x(2);
-    g(1) = x1 + x2 - 1; % vetor que guarda o valor encontrado em cada restri??o para o x daquela iteracao
+    g(1) = x1 + x2 - 1; % This array keeps the found value of each constraint to the X of such iteration
     result = max(g);
 end
 
