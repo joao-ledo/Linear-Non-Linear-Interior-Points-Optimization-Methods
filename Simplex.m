@@ -119,11 +119,11 @@ function result = solveSimplex(z,C,answer)
     while (verificanegatividade(CR) == true) && (sw.regiaoilimitada == false)          
           B = sw.B;
           N = sw.N;
-          CB = constroiCBeCN(C,B); % Custo das Basicas
-          CN = constroiCBeCN(C,N); % Custo das Nao Basicas
-          lambda = calculaLambda(CB,B); % Multiplicador Simplex
-          CR = encontraCR(CN,lambda,N); % Custo Relativo
-          sw = swap(B,N,CR,answer); % funcao de troca entre basica e nao basica
+          CB = constroiCBeCN(C,B); % Basic cost
+          CN = constroiCBeCN(C,N); % Not basic cost
+          lambda = calculaLambda(CB,B); % Simplex multiplier 
+          CR = encontraCR(CN,lambda,N); % Relative Cost
+          sw = swap(B,N,CR,answer); % Swap function between basic and not basic
           interacoes = interacoes + 1;
     end  
    if sw.regiaoilimitada == false 
@@ -188,7 +188,7 @@ end
 function result = descobrequemsaideB(b,n,cr,answer)
     solucao_basica = basicsolution(answer,b);
     y = direcaosimplex(b,n,cr);    
-    for i = 1 : length(y.valor) %tamanho do passo
+    for i = 1 : length(y.valor) % Step size
         if y.valor(i) < 0
             E.valor(i) = abs(solucao_basica{1}(i)/y.valor(i))*1000;
             E.nome{i} = solucao_basica{2}{i};
