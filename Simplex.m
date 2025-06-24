@@ -243,7 +243,7 @@ end
                   flag = flag + 1;
               end
           end
-          if ((flag < ( length(z) - length(b{1})))) %flag ~= length(b{2}) &&  talvez usar ~= 2
+          if ((flag < ( length(z) - length(b{1})))) % flag ~= length(b{2}) && maybe use ~= 2
               N1 = [N1,z{i}];
           end
           flag = 1;
