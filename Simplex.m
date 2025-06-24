@@ -1,6 +1,6 @@
 %_________________________________________________________________________%
 %           SIMPLEX METHOD TO SOLVE LINEAR OPTIMIZATION PROBLEMS          %
-%_________________________________________________________________________%
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
 
 function result = Simplex()
 
