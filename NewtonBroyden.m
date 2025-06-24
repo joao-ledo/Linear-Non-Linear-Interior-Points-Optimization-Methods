@@ -98,7 +98,7 @@ function result = fibonacci(d,x)
   result = saida;
 end
 
-function result = objetivo(alpha, variavel, z) % recebe alpha, recebe dire??o, recebe z = [x,y]
+function result = objetivo(alpha, variavel, z)
     x = z(1) + alpha*variavel(1);
     y = z(2) + alpha*variavel(2);
     result = 4*(x-5)^2+(y-6)^2;
