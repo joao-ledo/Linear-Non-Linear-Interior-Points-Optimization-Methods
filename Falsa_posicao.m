@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                           FAKE POSITION METHOD                          %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = Falsa_posicao()
   clear all;
   clc;
@@ -14,7 +18,7 @@ function result = Falsa_posicao()
   
   E=0.2;
   k = 1;
-  metodo.nome = 'Falca Posicao';
+  metodo.nome = 'Fake Position Method';
   metodo.x(k)=a; 
   metodo.x(k+1) = b;
   metodo.derivadas(k) = deriva_objetivo(metodo.x(k));
