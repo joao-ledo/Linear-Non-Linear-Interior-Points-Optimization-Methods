@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                              NEWTON METHOD                              %
+%_________________________________________________________________________%
+
 function result = Newton()
   clear all;
   clc;
@@ -18,8 +22,8 @@ function result = Newton()
   metodo.x(k)=a; 
   metodo.derivadas{k} = deriva_objetivo(metodo.x(k));
   metodo.x(k+1) = b;%metodo.x(k)-(metodo.derivadas{k}(1)/metodo.derivadas{k}(2));
- % metodo.derivadas{k}(1) <---- Derivada a primeira
-  % metodo.derivadas{k}(2) <---- Derivada a segunda
+ % metodo.derivadas{k}(1) <---- First order derivative
+  % metodo.derivadas{k}(2) <---- Second order derivative
   while(abs(metodo.derivadas{k}(1))>E) && (abs(metodo.x(k+1)-metodo.x(k))/abs(metodo.x(k+1))>=E) 
       k = k+1;
       metodo.derivadas{k} = deriva_objetivo(metodo.x(k));
