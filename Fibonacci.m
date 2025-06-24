@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                             FIBONACCI METHOD                            %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = Fibonacci()
   clear all;
   clc;
