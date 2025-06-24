@@ -1,23 +1,27 @@
+%_________________________________________________________________________%
+%           SIMPLEX METHOD TO SOLVE LINEAR OPTIMIZATION PROBLEMS          %
+%_________________________________________________________________________%
+
 function result = Simplex()
 
     clear all;
     clc;
     format long;
     
-    % Carregar os dados de entrada.
+    % Load the input data.
     data = loadInputData();
     z = data{1};
     C = data{2};
     answer = data{3};
     
-    % Resolve o simplex com os dados de entrada.
+    % Return the solution after loading the simplex method with the input data.
     resposta = solveSimplex(z,C,answer);
     result = resposta;
 end
 
- function result = loadInputData()% Local onde se carrega s informacoes 
+ function result = loadInputData()% Load input data
 %_________________________________________________________________________%
-%                               TESTE 1
+%                               TEST 1
 %         x1.valor = [7;3];
 %         x1.nome = 'x1';
 %         x2.valor = [-5;2];
@@ -40,7 +44,7 @@ end
 %         C = {y1,y2,y3,y4};
 %         z = {x1,x2,x3,x4};
 %_________________________________________________________________________%
-%                               TESTE 2
+%                               TEST 2
         x1.valor = [10;1;1;0];
         x1.nome = 'x1';
         
@@ -73,7 +77,7 @@ end
         C = {y1,y2,y3,y4,y5,y6};
         z = {x1,x2,x3,x4,x5,x6};
 %_________________________________________________________________________%
-%                                TESTE 3
+%                                TEST 3
 %         x1.valor = [1;1;0];
 %         x1.nome = 'x1';
 %         x2.valor = [1;0;1];
@@ -136,11 +140,11 @@ function result = solveSimplex(z,C,answer)
 end
 
 function result = swap(b,n,cr,answer)
-    outsideB = descobrequemsaideB(b,n,cr,answer);% Devolve o nome de quem sai de B
-    entraEmB = descobrequementraemB(cr); % Debolve o nome de quem entra em B
+    outsideB = descobrequemsaideB(b,n,cr,answer);% Returns the output name from B
+    entraEmB = descobrequementraemB(cr); % Returns the input name of B
     saiDeB = outsideB.variavel;    
     for i = 1 : length(b{2})
-        if b{2}{i} == saiDeB %Procurando em B quem sai de B
+        if b{2}{i} == saiDeB % Searching in B the taking out values of B
             outposition = i;
         end
     end
@@ -163,13 +167,13 @@ end
 function result = direcaosimplex(b,n,cr)
     a = [];   
     for i = 1 : length(n{2})
-        if n{2}{i} == descobrequementraemB(cr) %Busca o nome de quem sai de N e entra em B para fazer o c?lculo de y
+        if n{2}{i} == descobrequementraemB(cr) % Serach for a name of a value taking out of N and taking in B to calculate y
             a = n{1}(:,i);
         end
     end
     y.valor = inv(b{1})*a;
     y.ilimitado = false;
-   if (min(y.valor) <= 0) && (max(y.valor) <= 0) %se todos os valores de y forem negativos o problema e ilimitado
+   if (min(y.valor) <= 0) && (max(y.valor) <= 0) % If all y values are negative, this is a limited problem
        y.ilimitado = true;
    end    
     result = y;
@@ -276,7 +280,7 @@ end
     result = CR; 
   end
   
- function result = identidade(z) %Construir a matriz identidade do tamanho do problema
+ function result = identidade(z) % Creates the identity matrix with same size of the problem
     for i = 1 : length(z{1}.valor)
         for j = 1 : length(z{1}.valor)
             if i == j
