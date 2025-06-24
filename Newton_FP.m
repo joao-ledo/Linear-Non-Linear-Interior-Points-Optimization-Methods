@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%              NEWTON METHOD TO FIND THE OPTIMAL POWER FLOW               %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = Newton_FP()
   clear all;
   clc;
@@ -37,7 +41,7 @@ function result = Newton_FP()
    perd =  perdas(v, teta, g, b, bShunt, newton(k).entrada);
    balanco = calculoF(v, teta, g, b, bShunt, newton(k).entrada, pg, qg, pc, qc);
 
-   fp.nome = 'Fluxo de Potencia';
+   fp.nome = 'Power Flow';
    fp.modulo_tensao = v;
    fp.angulos_tensao = teta;
    
@@ -145,7 +149,7 @@ function result = calculaB(r,x)
     result = (-x)/(r^2 + x^2);
 end
 
-% Fun??o que foi usada no desenvolvimento do algoritmo para descobrir a matriz jacobiana.
+% Used function, during the code development, to find the Jacobian matrix
 function result = jacobiana_objetivo(pg,pc,qg,qc,teta,v,b,bShunt,g, entrada)
     syms pg1 pg2 pg3 pc1 pc2 pc3 qg1 qg2 qg3 qc1 qc2 qc3 teta1 teta2 teta3 v1 v2 v3 b1 b2 b3 bshunt1 bshunt2 bshunt3 g1 g2 g3;
     f1 = pg2 - pc2 - (v2^2*g1-v2*v1*g1*cos(teta2-teta1)-v2*v1*b1*sin(teta2-teta1)+v2^2*g3-v2*v3*g3*cos(teta2-teta3)-v2*v3*b3*sin(teta2-teta3));
