@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                        PROJECTED GRADIENT METHOD                        %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = GradienteProjetado()
     clear all;
     clc; 
@@ -40,7 +44,7 @@ function result = GradienteProjetado()
         k = k + 1;
     end
 
-    metodo.nome = 'Gradiente Projetado';
+    metodo.nome = 'Projected Gradient';
     metodo.resultado = [x{k}(1),x{k}(2)];
     result = metodo;
 end
