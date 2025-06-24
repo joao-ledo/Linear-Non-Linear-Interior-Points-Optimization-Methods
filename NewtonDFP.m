@@ -55,7 +55,7 @@ function result = fibonacci(d,x)
   metodo.nome = 'Fibonacci';
   metodo.a(k) = a;
   metodo.b(k) = b;
-  metodo.fibonacci = determinar_N(metodo.a(k),metodo.b(k),l); % o erro esta no calculo de n
+  metodo.fibonacci = determinar_N(metodo.a(k),metodo.b(k),l); % the tolerance gap is in calculating n
   metodo.n = length(metodo.fibonacci);
   metodo.lambda(k) = lambda(metodo.a(k),metodo.b(k),metodo.fibonacci,metodo.n,k);
   metodo.mi(k) = mi(metodo.a(k),metodo.b(k),metodo.fibonacci,metodo.n,k);
@@ -104,7 +104,7 @@ function result = fibonacci(d,x)
   result = saida;
 end
 
-function result = objetivo(alpha, variavel, z) % recebe alpha, recebe dire??o, recebe z = [x,y]
+function result = objetivo(alpha, variavel, z)
     x = z(1) + alpha*variavel(1);
     y = z(2) + alpha*variavel(2);
     result = x^2 + y^2 + x*y - 3*x;
