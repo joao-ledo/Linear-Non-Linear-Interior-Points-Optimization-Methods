@@ -39,7 +39,7 @@ end
 
 function result = fibonacci(d,x)
 
-% This portion aims to find alpha | alpha is between a and b points
+% This portion aims to find alpha | alpha is in between a and b points
 % Also the goal in this unidimensional search is finding function f(xk + alpha*dk) minimum
 %  by feeding dk as the main function gradient
   a=-1.0;
