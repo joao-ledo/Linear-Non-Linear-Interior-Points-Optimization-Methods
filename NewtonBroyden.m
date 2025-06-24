@@ -41,7 +41,7 @@ function result = fibonacci(d,x)
 
 % This portion aims to find alpha | alpha is in between a and b points
 % Also the goal in this unidimensional search is finding function f(xk + alpha*dk) minimum
-%  by feeding dk as the main function gradient
+% by feeding dk as the main function gradient
   a=-1.0;
   b=1.0;
   l=0.2;  
@@ -49,7 +49,7 @@ function result = fibonacci(d,x)
   metodo.nome = 'Fibonacci';
   metodo.a(k) = a;
   metodo.b(k) = b;
-  metodo.fibonacci = determinar_N(metodo.a(k),metodo.b(k),l); % o erro esta no calculo de n
+  metodo.fibonacci = determinar_N(metodo.a(k),metodo.b(k),l); % the tolerance gap is in calculating n
   metodo.n = length(metodo.fibonacci);
   metodo.lambda(k) = lambda(metodo.a(k),metodo.b(k),metodo.fibonacci,metodo.n,k);
   metodo.mi(k) = mi(metodo.a(k),metodo.b(k),metodo.fibonacci,metodo.n,k);
