@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                        CONJUGATED GRADIENT METHOD                       %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = GradientesConjugados()
     clear all;
     clc; 
@@ -18,7 +22,7 @@ function result = GradientesConjugados()
         k = k+1;    
     end
 
-gc.nome = 'Metodo dos Gradientes Conjugados';
+gc.nome = 'Conjugated Gradient Method';
 gc.MelhorPonto = x{k-1}';
 
 
