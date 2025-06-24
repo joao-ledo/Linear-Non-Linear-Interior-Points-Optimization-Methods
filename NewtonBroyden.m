@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                          NEWTON BROYDEN METHOD                          %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = NewtonBroyden()
   clear all;
   clc; 
@@ -35,10 +39,9 @@ end
 
 function result = fibonacci(d,x)
 
-% o intuito dessa parte ? descobrir o alpha, a e b s?o pontos que entre
-% eles exista um alpha, o objetivo dessa parte da busca unidimensional ?
-% encontrar o minimo da fun??o f(xk + alpha*dk), alimentando o dk como
-% ogradiente da fun??o principal.
+% This portion aims to find alpha | alpha is between a and b points
+% Also the goal in this unidimensional search is finding function f(xk + alpha*dk) minimum
+%  by feeding dk as the main function gradient
   a=-1.0;
   b=1.0;
   l=0.2;  
