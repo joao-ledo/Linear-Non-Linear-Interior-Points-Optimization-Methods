@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                 MODIFIED MULTIDIMENSIONAL NEWTON METHOD                 %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = NewtonMultiModificado()
   clear all;
   clc; 
@@ -13,10 +17,10 @@ function result = NewtonMultiModificado()
       alpha = fibonacci(d{contador}, x{contador}); % Busca Unidimensional!
       x{contador + 1} = x{contador} + alpha*d{contador}';    
       grad{contador+1} = gradiente(x{contador+1});
-      hessi{contador + 1} = hessiana(x{1}); %No newton modificado a matriz hessiana ? constante em X1
+      hessi{contador + 1} = hessiana(x{1}); % In the modified version of multidimensional newton method the hessian matrix is constant in X1
       contador = contador + 1;
   end 
-resultado.nome = 'Metodo de Newton Multidimensional Modificado';
+resultado.nome = 'Modified Newton Multidimensional Method';
 resultado.valor = x{contador};
 result = resultado;
 end
@@ -83,7 +87,7 @@ function result = fibonacci(d,x)
   result = saida;
 end
 
-function result = objetivo(alpha, variavel, z) % recebe alpha, recebe dire??o, recebe z = [x,y]
+function result = objetivo(alpha, variavel, z)
     x = z(1) + alpha*variavel(1);
     y = z(2) + alpha*variavel(2);
     %result = x^2 + y^2 + x*y - 3*x;
