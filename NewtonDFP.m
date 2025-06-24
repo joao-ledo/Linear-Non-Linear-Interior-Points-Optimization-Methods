@@ -38,7 +38,7 @@ function result = NewtonDFP()
       x{contador + 1} = x{contador} + alpha(contador)*d{contador};      
       %grad{contador} = gradiente(x{contador}');
   end 
-resultado.nome = 'Metodo de Davidon-Fletcher-Powell';
+resultado.nome = 'Davidon-Fletcher-Powell Method';
 resultado.valor = x{contador}';
 result = resultado;
 end
