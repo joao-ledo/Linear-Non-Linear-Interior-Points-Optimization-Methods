@@ -68,10 +68,9 @@ end
 
 function result = fibonacci(d,x,lambda,c)
 
-% o intuito dessa parte ? descobrir o alpha, a e b s?o pontos que entre
-% eles exista um alpha, o objetivo dessa parte da busca unidimensional ?
-% encontrar o minimo da fun??o f(xk + alpha*dk), alimentando o dk como
-% ogradiente da fun??o principal.
+% This portion aims to find alpha | alpha is in between a and b points
+% Also the goal in this unidimensional search is finding function f(xk + alpha*dk) minimum
+% by feeding dk as the main function gradient
   a=-1.0;
   b=1.0;
   l=0.2;  
@@ -128,7 +127,7 @@ function result = fibonacci(d,x,lambda,c)
   result = saida;
 end
 
-function result = objetivo(alpha, variavel, z, lambda, c) % recebe alpha, recebe direcao, recebe z = [x,y]
+function result = objetivo(alpha, variavel, z, lambda, c)
     x1 = z(1) + alpha*variavel(1);
     x2 = z(2) + alpha*variavel(2);
     result = x1^2 + x2^2 + lambda*(x1 + x2 - 1)+c*(x1 + x2 - 1)^2;
