@@ -113,7 +113,7 @@ end
  
  function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2))
-       answer = input('Please choose carefully the desriable method by \n pressing 1 for polinomial quadratic order method \n pressing 2 for N-dimensional quadratic order method: \n');
+       answer = input('Please choose carefully the desirable method by \n pressing 1 for polynomial quadratic order method \n pressing 2 for N-dimensional quadratic order method: \n');
     end
     result = answer;
  end
