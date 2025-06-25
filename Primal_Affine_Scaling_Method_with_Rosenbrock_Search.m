@@ -15,11 +15,11 @@ function result = PrimalAfimPPQTragetoriaCentral()
     clc;
     format long;      
     data = loadInputData(); % Load the input data
-    result = SolvePrimalAfimPPQTragetoriaCentral(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q, data.Mi, data.e, data.answer); % Cria a Instancia que resolve juntamente com os dados
+    result = SolvePrimalAfimPPQTragetoriaCentral(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q, data.Mi, data.e, data.answer); % Creates the instances and solve it by loading the input data
 end
 
 %_________________________________________________________________________%
- function result = loadInputData() % Local onde se carregam as informacoes
+ function result = loadInputData() % Load input data function
     resultado.Erro{1} = 10^-4;
     resultado.Erro{2} = 10^-5;
     resultado.Erro{3} = 10^-3;
