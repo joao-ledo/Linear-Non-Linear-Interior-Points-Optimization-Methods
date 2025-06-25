@@ -1,14 +1,12 @@
-% ======================================================================= %
-%                                                                         %
-%                           Busca Dicotomica                              %
-%                                                                         %
-%                                   Developed by Jo?o Augusto Silva L?do  %
-% ======================================================================= %
+%_________________________________________________________________________%
+%                         DICHOTOMIC SEARCH METHOD                        %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = Busca_Dicotomica()
   clear all;
   clc;
   % =======================================================================
-  %                  Inicializacao dos dados de entrada
+  %                          LOADING INPUT DATA
   % =======================================================================
   E = 0.01;
   
@@ -25,7 +23,7 @@ function result = Busca_Dicotomica()
   k = 1;
   
   % =======================================================================
-  %                         Inicio da Busca Dicotomica
+  %                    STARTING DICHOTOMIC SEARCH METHOD
   % =======================================================================
   dicotomica.nome = 'Busca Dicotomica';
   dicotomica.a(k) = a;
@@ -50,21 +48,21 @@ function result = Busca_Dicotomica()
 end
 
   % =======================================================================
-  %                            Calculo do Lambda
+  %                          CALCULATING LAMBDA
   % =======================================================================
     function result = lambda(a,b,E)
     result = ((a+b)/2)-E;
     end
 
   % =======================================================================
-  %                          Calculo do Mi
+  %                           CALCULATING MU
   % =======================================================================
     function result = mi(a,b,E)
     result = ((a+b)/2)+E;
     end
 
   % =======================================================================
-  %                        Calculo da Funcao Objetivo
+  %                  FINDING THE OBJECTIVE FUNCTION VALUES
   % =======================================================================
     function result = objetivo(x)
      result =  x^2-5*x+6;
