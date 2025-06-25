@@ -25,7 +25,7 @@ end
     resultado.Erro{3} = 10^-3;
     resultado.Mi = 1;
       
-%     resultado.answer = 1; % Without Rosenbrock
+%     resultado.answer = 1; % Without Rosenbrock Search
 %     resultado.C = [1; 2; -3];
 %     resultado.C_quadratic = [2; 3; 5];
 %     resultado.A = [1, 1, 0; 0, 1, 1];
@@ -57,7 +57,7 @@ end
     resultado.pontoInicial{1} = inv(-resultado.Q) * resultado.C;
     resultado.pontoInicial{2} = [500; 150; 200; 400; 100; 100; 50; 100; 200];
     
-%     resultado.answer = 2; % With Rosenbrock
+%     resultado.answer = 2; % With Rosenbrock Search
 %     resultado.C = [-2; 0; 0; 0; 0];
 %     resultado.C_quadratic = [0; 0; 0];
 %     resultado.A = [1, -1, 1, 0, 0; 0, -1, 0, 1, 0; 0, 1, 0, 0, 1];  
@@ -148,7 +148,7 @@ function result = VerificaNome(answer)
     if(answer == 1)
         resposta = 'Primal Affine Scalling polynomial quadratic order method with Central Trajectory';
     else if (answer == 2)
-            resposta = 'Primal Affine Scalling polynomial quadratic order method with Rosenbrock';
+            resposta = 'Primal Affine Scalling polynomial quadratic order method with Rosenbrock Search';
         end
     end
     result = resposta;
