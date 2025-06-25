@@ -1,7 +1,7 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%                            DUAL AFIM ALGORITHM                          %
+%                  DUAL AFFINE SCALING INTERIOR-POINTS METHOD             %
 %                                                                         %
 %                                                                         %
 %                                          Developed by:                  % 
@@ -17,12 +17,12 @@ function result = DualAfim()
 end
 
 %_________________________________________________________________________%
- function result = loadInputData() % Local onde se carregam as informacoes
+ function result = loadInputData() % Load input data function
         resultado.Erro = 10^-3;
         
         resultado.C{1} = [-2; -1];
         resultado.C{2} = ['x1';'x2'];
-        resultado.A{1} = [-1, 1; 1, 0; 0, 1; -1, 0; 0, -1];    % <------------- Problema 1
+        resultado.A{1} = [-1, 1; 1, 0; 0, 1; -1, 0; 0, -1];    % <------------- Problem 1
         resultado.A{2} = ['x1';'x2'];
         resultado.b = [1; 3; 2; 0; 0];
         resultado.pontoInicial = [1; 1];
@@ -32,7 +32,7 @@ end
       
 %         resultado.C{1} = [-2; 1];
 %         resultado.C{2} = ['x1'; 'x2'];
-%         resultado.A{1} = [1, -1; 0, 1; -1, 0; 0, -1];   % <------------- Problema 2
+%         resultado.A{1} = [1, -1; 0, 1; -1, 0; 0, -1];   % <------------- Problem 2
 %         resultado.A{2} = ['x1';'x2'];
 %         resultado.b = [15; 15; 0; 0];
 %         resultado.pontoInicial = [8; 2];
@@ -55,7 +55,7 @@ end
            Ds{k} = DirecaoS(A{1}, Dx{k});
            FO{k} = calculoFO(x{k}, C{1});
            if((sum(abs(Ds{k})) <= Erro))
-                   resultado.Nome = 'Algoritmo Dual Afim';
+                   resultado.Nome = 'Dual Affine Scaling Interior-Points Method';
                    resultado.Beta = Beta;
                    resultado.W = W;
                    resultado.Matriz_S = S;
@@ -68,14 +68,14 @@ end
                    flag = true;
            else
                 if(verificanegatividade(Ds{k}) == false)
-                    resultado.Nome = 'Algoritmo Dual Afim';
-                    resultado.x = 'Problema Ilimitado';
+                    resultado.Nome = 'Dual Affine Scaling Interior-Points Method';
+                    resultado.x = 'Unlimited Problem';
                     resultado.Iteracoe = k-1;
                     flag = true;
                 else
                     W{k} = EstimativaDual(S{k}, Ds{k});
                     if((verificanegatividade(W{k}) == false) && (calculaErroDual(e, S{k}, W{k}) <= Erro))
-                        resultado.Nome = 'Algoritmo Dual Afim';
+                        resultado.Nome = 'Dual Affine Scaling Interior-Points Method';
                         resultado.Beta = Beta;
                         resultado.W = W;
                         resultado.Matriz_S = S;
@@ -87,7 +87,7 @@ end
                         resultado.Iteracoes = k-1;
                         flag = true;
                     else if((verificanegatividade(W{k}) == false) && (calculaErroPrimal(x{k}, b, W{k}) <= Erro))
-                            resultado.Nome = 'Algoritmo Dual Afim';
+                            resultado.Nome = 'Dual Affine Scaling Interior-Points Method';
                             resultado.Beta = Beta;
                             resultado.W = W;
                             resultado.Matriz_S = S;
@@ -99,7 +99,7 @@ end
                             resultado.Iteracoes = k-1;
                             flag = true;                            
                         else if((verificanegatividade(W{k}) == false) && (VerificaErro(S{k}, Erro) == false))
-                                resultado.Nome = 'Algoritmo Dual Afim';
+                                resultado.Nome = 'Dual Affine Scaling Interior-Points Method';
                                 resultado.Beta = Beta;
                                 resultado.W = W;
                                 resultado.Matriz_S = S;
