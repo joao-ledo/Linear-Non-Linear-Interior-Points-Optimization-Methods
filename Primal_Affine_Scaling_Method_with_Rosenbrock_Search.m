@@ -1,10 +1,10 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%                           PRIMAL AFIM ALGORITHM                         %
-%                         (PPQ - Tragetoria Central)                      % 
-%                           (Com & Sem Rosembrock)                        % 
-%                     (Com problema de Despacho Economico)                %  
+%                PRIMAL AFFINE SCALING INTERIOR-POINTS METHOD             %
+%              (polynomial quadratic order - Central Trajectory)          % 
+%                     (With or without Rosenbrock Search)                 % 
+%                     (For the Economic Dispatch Problem)                 %  
 %                                                                         %
 %                                          Developed by:                  % 
 %                                                 Joao Augusto Silva Ledo %
@@ -14,7 +14,7 @@ function result = PrimalAfimPPQTragetoriaCentral()
     clear all;
     clc;
     format long;      
-    data = loadInputData(); % Carregar os dados de entrada.
+    data = loadInputData(); % Load the input data
     result = SolvePrimalAfimPPQTragetoriaCentral(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q, data.Mi, data.e, data.answer); % Cria a Instancia que resolve juntamente com os dados
 end
 
@@ -25,7 +25,7 @@ end
     resultado.Erro{3} = 10^-3;
     resultado.Mi = 1;
       
-%     resultado.answer = 1; % Sem Rosembrock
+%     resultado.answer = 1; % Without Rosenbrock
 %     resultado.C = [1; 2; -3];
 %     resultado.C_quadratic = [2; 3; 5];
 %     resultado.A = [1, 1, 0; 0, 1, 1];
@@ -34,10 +34,10 @@ end
 %     resultado.pontoInicial{1} = inv(-resultado.Q) * resultado.C;
 %     resultado.pontoInicial{2} = [3; 2; 8];
     
-    resultado.answer = 1; % Sem Rosembrock
+    resultado.answer = 1; % Without Rosenbrock
     resultado.C = [7.92; 7.97; 7.85; 0; 0; 0; 0; 0; 0];
     resultado.C_quadratic = [0.001562; 0.00482; 0.001940; 0; 0; 0; 0; 0; 0];
-    resultado.A = [1, 1, 1, 0, 0, 0, 0, 0, 0;                                   %<-------------Problema de Despacho Economico com 3 geradores
+    resultado.A = [1, 1, 1, 0, 0, 0, 0, 0, 0;                                   %<------------- Economic Dispatch Problem with 3 generators
                    -1, 0, 0, 1, 0, 0, 0, 0, 0;
                    1, 0, 0, 0, 1, 0, 0, 0, 0;
                    0, -1, 0, 0, 0, 1, 0, 0, 0;
@@ -57,7 +57,7 @@ end
     resultado.pontoInicial{1} = inv(-resultado.Q) * resultado.C;
     resultado.pontoInicial{2} = [500; 150; 200; 400; 100; 100; 50; 100; 200];
     
-%     resultado.answer = 2; % Com Rosenbrock
+%     resultado.answer = 2; % With Rosenbrock
 %     resultado.C = [-2; 0; 0; 0; 0];
 %     resultado.C_quadratic = [0; 0; 0];
 %     resultado.A = [1, -1, 1, 0, 0; 0, -1, 0, 1, 0; 0, 1, 0, 0, 1];  
@@ -146,9 +146,9 @@ end
 
 function result = VerificaNome(answer)
     if(answer == 1)
-        resposta = 'Algoritmo Primal Afim (PPQ) Trajetoria Central';
+        resposta = 'Primal Affine Scalling polynomial quadratic order method with Central Trajectory';
     else if (answer == 2)
-            resposta = 'Algoritmo Primal Afim (PPQ) Trajetoria Central Com Rosenbrock';
+            resposta = 'Primal Affine Scalling polynomial quadratic order method with Rosenbrock';
         end
     end
     result = resposta;
