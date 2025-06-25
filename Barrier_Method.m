@@ -32,7 +32,7 @@ function result = Barreira()
       mi(contador+1) = beta*mi(contador);
       contador = contador + 1;
   end 
-resultado.nome = 'Metodo de Barreira';
+resultado.nome = 'Barrier Method';
 resultado.valor = x{contador};
 resultado.mi = mi(contador);
 resultado.iteracoes = contador;
