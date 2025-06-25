@@ -104,7 +104,7 @@ end
  
  function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar o Algoritmo \nDigite 1 se deseja resolver pelo metodo de polinomio ordem quadratica ou 2 por metodo de polinomio de ordem N-dimensional: \n');
+       answer = input('Please choose carefully the desirable method by \n pressing 1 for polynomial quadratic order method \n pressing 2 for N-dimensional polynomial quadratic order method: \n');
     end
     result = answer;
  end
