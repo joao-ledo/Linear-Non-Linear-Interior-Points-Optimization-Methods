@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                             BARRIER METHOD                              %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = Barreira()
   clear all;
   clc; 
@@ -14,14 +18,14 @@ function result = Barreira()
   while(verificador >= epslon)
       verificador = max(abs(grad{contador}));
       d{contador} = - inv(hessi{contador}) * grad{contador};
-      alpha = fibonacci(d{contador}, x{contador},mi(contador)); % Busca Unidimensional!
+      alpha = fibonacci(d{contador}, x{contador},mi(contador)); % Unidimensional Search
       x{contador + 1} = x{contador} + alpha*d{contador}';
       %B = barreirainversa(x{contador+1});
       B = barreiralogaritimica(x{contador+1});   
       grad{contador+1} = gradiente(x{contador+1},mi(contador));
       hessi{contador + 1} = hessiana(x{contador+1},mi(contador));
       
-      if (mi(contador)*B < epslon) %Passo essencial que determina quando parar pois encontrou o ponto que satisfa?a a restricao.
+      if (mi(contador)*B < epslon) % Determine when to stop based on finding the feasible point that satisfies the constraint
           verificador = 1*10^-14;
       end
       
@@ -125,7 +129,7 @@ function result = fibonacci(d,x,mi)
   result = saida;
 end
 
-function result = objetivo(alpha, variavel, z, mi) % recebe alpha, recebe dire??o, recebe z = [x,y]
+function result = objetivo(alpha, variavel, z, mi)
     x1 = z(1) + alpha*variavel(1);
     x2 = z(2) + alpha*variavel(2);
     x = [x1,x2];
