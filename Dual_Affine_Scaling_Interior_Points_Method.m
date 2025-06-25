@@ -12,8 +12,8 @@ function result = DualAfim()
     clear all;
     clc;
     format long;      
-    data = loadInputData(); % Carregar os dados de entrada.
-    result = solveDualAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.Sinicial, data.b); % Cria a Instancia que resolve juntamento com os dados
+    data = loadInputData(); % Load the input data
+    result = solveDualAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.Sinicial, data.b); % Creates the instances and solve it by loading the input data
 end
 
 %_________________________________________________________________________%
