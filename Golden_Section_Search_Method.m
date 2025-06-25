@@ -1,14 +1,12 @@
-% ======================================================================= %
-%                                                                         %
-%                       Busca do M?todo do Segmento Aureo                 %
-%                                                                         %
-%                                   Developed by Jo?o Augusto Silva L?do  %
-% ======================================================================= %
+%_________________________________________________________________________%
+%                       GOLDEN SECTION SEARCH METHOD                      %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = Busca_Seguimento_Aureo()
   clear all;
   clc;
   % =======================================================================
-  %                  Inicializacao dos dados de entrada
+  %                         LOADING INPUT DATA
   % =======================================================================
   alpha = (sqrt(5.0)-1)/2;
   
@@ -25,9 +23,9 @@ function result = Busca_Seguimento_Aureo()
   k = 1;
   
   % =======================================================================
-  %               Inicio da Busca pelo Metodo do Segmento Aureo
+  %               STARTING THE GOLDEN SECTION SEARCH METHOD
   % =======================================================================
-  segmento_aureo.nome = 'Busca do Segmento Aureo';
+  segmento_aureo.nome = 'Golden Section Search Method';
   segmento_aureo.a(k) = a;
   segmento_aureo.b(k) = b;  
      segmento_aureo.lambda(k) = lambda(segmento_aureo.a(k),segmento_aureo.b(k),alpha);
@@ -61,21 +59,21 @@ function result = Busca_Seguimento_Aureo()
 end
 
   % =======================================================================
-  %                            Calculo do Lambda
+  %                           CALCULATING LAMBDA
   % =======================================================================
     function result = lambda(a,b,alpha)
     result = a+(1-alpha)*(b-a);
     end
 
   % =======================================================================
-  %                          Calculo do Mi
+  %                           CALCULATING MU
   % =======================================================================
     function result = mi(a,b,alpha)
     result = a+alpha*(b-a);
     end
 
   % =======================================================================
-  %                        Calculo da Funcao Objetivo
+  %                  FINDING THE OBJECTIVE FUNCTION VALUES
   % =======================================================================
     function result = objetivo(x)
      % result =  x^2-5*x+6;
