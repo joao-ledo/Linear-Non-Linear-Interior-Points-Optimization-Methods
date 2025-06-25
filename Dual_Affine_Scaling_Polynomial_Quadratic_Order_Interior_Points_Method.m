@@ -1,7 +1,7 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%                      PRIMAL DUAL ALGORITHM (PPQ)                        %
+%  DUAL AFFINE SCALING POLYNOMIAL QUADRATIC ORDER INTERIOR-POINTS METHOD  %
 %                                                                         %
 %                                                                         %
 %                                          Developed by:                  % 
@@ -12,17 +12,17 @@ function result = DualAfimPPQ()
     clear all;
     clc;
     format long;      
-    data = loadInputData(); % Carregar os dados de entrada.
-    result = solvePrimalAfimPPQ(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q, data.Sinicial, data.e); % Cria a Instancia que resolve juntamento com os dados
+    data = loadInputData(); % Load input data
+    result = solvePrimalAfimPPQ(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q, data.Sinicial, data.e);  % Creates the instances and solve it by loading the input data
 end
 
 %_________________________________________________________________________%
- function result = loadInputData() % Local onde se carregam as informacoes
+ function result = loadInputData() % Load input data function
     resultado.Erro = 10^-1;
 
     resultado.C = [-256; 0];%[4; -6];
     resultado.C_quadratic = [2; 3];
-    resultado.A = [-1, 1; -1, -1; 1, 0; 0, 1; -1, 0; 0, -1];   % [-1, 1; -1, -1;1, 0;0, 1; -1, 0; 0, -1] <------------- Problema 2
+    resultado.A = [-1, 1; -1, -1; 1, 0; 0, 1; -1, 0; 0, -1];   % [-1, 1; -1, -1;1, 0;0, 1; -1, 0; 0, -1] <------------- Problem 2
     resultado.b = [1; -1; 3; 2; 0; 0]; 
     resultado.Q = [4, 0; 0, 6];
     resultado.pontoInicial{1} = inv(-resultado.Q) * resultado.C;
@@ -60,7 +60,7 @@ end
         Dx{k} = DirecaoX(A, S{k}, Q{k}, x{k}, C);
         Ds{k} = DirecaoS(A, Dx{k});
         if(VerificaMenorErro(Ds{k}, Erro) == true)
-            resultado.Nome = 'Algoritmo Dual Afim (PPQ)';
+            resultado.Nome = 'Dual Affine Scaling Polynomial Quadratic Order Interior-Points Method';
             resultado.Fo = Fo;
             resultado.Q = Q;
             resultado.x = x;
@@ -72,14 +72,14 @@ end
             flag = true;
         else         
             if((VerificaPositividade(Ds{k}) == true))
-                resultado.Nome = 'Algoritmo Dual Afim (PPQ)';
-                resultado.x = 'Problema Ilimitado';
+                resultado.Nome = 'Dual Affine Scaling Polynomial Quadratic Order Interior-Points Method';
+                resultado.x = 'Unlimited Problem';
                 resultado.Iteracoe = k-1;
                 flag = true;
             else
                 w{k} = Calcula_W(S{k}, Ds{k});
                 if((verificanegatividade(w{k}) == false) || (VerificaErro(e, S{k}, w{k}, Erro) == true))
-                    resultado.Nome = 'Algoritmo Dual Afim (PPQ)';
+                    resultado.Nome = 'Dual Affine Scaling Polynomial Quadratic Order Interior-Points Method';
                     resultado.Fo = Fo;
                     resultado.Q = Q;
                     resultado.x = x;
