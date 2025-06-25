@@ -53,7 +53,7 @@ end
    else
        x{k} = pontoInicial{2};
    end
-%    answer = input('Type 1 if wants to solve using polynomial quadratic order or 2 for using polynomial quadratic order N-dimensional: \n');
+%    answer = input('Type 1 if wants to solve using polynomial quadratic order or 2 for using N-dimensional polynomial quadratic order method: \n');
 %    answer = VerificaOpcao(answer);
 %    VerificaOpcao(answer);
    while(flag == false)
@@ -113,7 +113,7 @@ end
  
  function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2))
-       answer = input('Please choose carefully the desirable method by \n pressing 1 for polynomial quadratic order method \n pressing 2 for N-dimensional quadratic order method: \n');
+       answer = input('Please choose carefully the desirable method by \n pressing 1 for polynomial quadratic order method \n pressing 2 for N-dimensional polynomial quadratic order method: \n');
     end
     result = answer;
  end
