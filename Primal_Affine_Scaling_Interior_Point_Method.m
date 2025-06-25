@@ -1,8 +1,8 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%                           PRIMAL AFIM ALGORITHM                         %
-%                       (Com & Sem Trajetoria Central)                    %
+%                 PRIMAL AFFINE SCALING INTERIOR-POINT METHOD             %
+%                     (with or without Central Trajectory)                %
 %                                                                         %
 %                                          Developed by:                  % 
 %                                                 Joao Augusto Silva Ledo %
@@ -12,35 +12,35 @@ function result = PrimalAfim()
     clear all;
     clc;
     format long;      
-    data = loadInputData(); % Carregar os dados de entrada.
+    data = loadInputData(); % Load the input data
     result = solvePrimalAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.answer, data.Mi); % Cria a Instancia que resolve juntamento com os dados
 end
 
 %_________________________________________________________________________%
- function result = loadInputData() % Local onde se carregam as informacoes
+ function result = loadInputData() % Load the input data function
          resultado.Erro = 10^-3;
          
-%         resultado.answer = 1; % Sem Trajetoria Central
+%         resultado.answer = 1; % Without Central Trajectory
 %         resultado.C{1} = [-2; 1; 0; 0];
-%         resultado.A{1} = [1, -1, 1, 0; 1, 1, 0, 1];     % <------------- Problema 1
+%         resultado.A{1} = [1, -1, 1, 0; 1, 1, 0, 1];     % <------------- Problem 1
 %         resultado.pontoInicial = [2,1,1,3];
 %         resultado.Mi = 0;
 
-%         resultado.answer = 2; % Com Trajetoria Central
+%         resultado.answer = 2; % With Central Trajectory
 %         resultado.C{1} = [-2; 1; 0; 0];
-%         resultado.A{1} = [1, -1, 1, 0; 1, 1, 0, 1];     % <------------- Problema 1
+%         resultado.A{1} = [1, -1, 1, 0; 1, 1, 0, 1];     % <------------- Problem 1
 %         resultado.pontoInicial = [2,1,1,3];
 %         resultado.Mi = 1;
 
-         resultado.answer = 1; % Sem Trajetoria Central
+         resultado.answer = 1; % Without Central Trajectory
          resultado.C{1} = [-2; 1; 0; 0];
-         resultado.A{1} = [1, -1, 1, 0; 0, 1, 0, 1];   % <------------- Problema 2
+         resultado.A{1} = [1, -1, 1, 0; 0, 1, 0, 1];   % <------------- Problem 2
          resultado.pontoInicial = [8; 2; 9; 13];
          resultado.Mi = 0;
          
-%          resultado.answer = 2; % Com Trajetoria Central
+%          resultado.answer = 2; % With Central Trajectory
 %          resultado.C{1} = [-2; 1; 0; 0];
-%          resultado.A{1} = [1, -1, 1, 0; 0, 1, 0, 1];   % <------------- Problema 2
+%          resultado.A{1} = [1, -1, 1, 0; 0, 1, 0, 1];   % <------------- Problem 2
 %          resultado.pontoInicial = [8; 2; 9; 13];
 %          resultado.Mi = 1;
 
@@ -81,7 +81,7 @@ end
                 Dy{k} = Direcao(X{k},r{k});
                 if(verificanegatividade(Dy{k}) == false)
                     resultado.Nome = VerificaNome(answer);
-                    resultado.x = 'Problema Ilimitado';
+                    resultado.x = 'Unlimited Problem';
                     resultado.Mi = Mi;
                     resultado.Iteracoe = k-1;
                     flag = true;
@@ -115,9 +115,9 @@ end
  
  function result = VerificaNome(answer)
     if(answer == 1)
-        resposta = 'Algoritmo Primal Afim (PPL)';
+        resposta = 'Primal Affine Scaling Method';
     else if (answer == 2)
-            resposta = 'Algoritmo Primal Afim (PPL) Com Trajetoria Central';
+            resposta = 'Primal Affine Scaling Method with Central Trajectory';
         end
     end
     result = resposta;
