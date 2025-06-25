@@ -55,7 +55,7 @@ end
    x{k} = pontoInicial{1};
    s{k} = Sinicial;
    w{k} = {};
-%    answer = input('Digite 1 se deseja resolver pelo metodo de polinomio ordem quadratica ou 2 por metodo de polinomio de ordem N-dimensional : \n');
+%    answer = input('Type 1 if wants to solve using polynomial quadratic order or 2 for using N-dimensional polynomial quadratic order method: \n');
 %    answer = VerificaOpcao(answer);
 %    VerificaOpcao(answer);
    Fo{k} = calculoFO(x{k}, C, C_quadratic);
