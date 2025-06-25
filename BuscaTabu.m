@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                            TABU SEARCH METHOD                           %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function resultado = BuscaTabu()
     clear all;
     clc;
@@ -105,11 +109,6 @@ function resultado = constroiSolucaoInicial(G, Pgmin, Pgmax)
     resultado = Pg;
 end
 
-% function resultado = condicaoParada()
-%     
-% 
-% end
-
 function resultado = constroivizinhanca(Sbest,G)
    for i = 1:G
        SbestBin{i} = dec2bin(Sbest(i));
@@ -164,18 +163,18 @@ function resultado = Fo(a,b,c,e,f,Pgmin,Pgmax,Pd,Pg,G,penalizacao)
     resultado = sum(FuncaoAvaliacao);
 end
 
-function result = CalculoVizinho(Sbest, passo, pd, pgiMin, pgiMax, G) % passo dado para os dados vizinhos, o tamanho desse passo ? c?lculado pelo minmax, que ? um percentual m?dio tirado do valor que se deseja encontrar para o lado (vizinhos)
+function result = CalculoVizinho(Sbest, passo, pd, pgiMin, pgiMax, G) % step taken to the neighborhood | the step size is calculated by minmax | minmax is a medium percetual taken from the nearest neighbor (vizinhos)
   position = size(Sbest);
   vetor = size(size(Sbest));
   cont = 0;
   totalpercent = 100.0;
    for i = 1: length(Sbest)
-    if(i == length(pgiMin)) % Se i estiver apontando para a ultima posi??o fa?a:
-        vetor(i) = pd * (totalpercent/100); % adicionar o percentual de restri??o de min?mos e m?ximos
+    if(i == length(pgiMin)) % If i is holding the last position do:
+        vetor(i) = pd * (totalpercent/100); % adds the minimum and maximum constraints percentual
     else
       minimo = max(pgiMin(i), Sbest(i)-passo(i));
       maximo = min(pgiMax(i), Sbest(i)+passo(i)); 
-      aleatorio = rand_in_bounds((minimo*100.0)/pd, (maximo*100.0)/pd);  % Respons?vel por chutar valores convenientes 
+      aleatorio = rand_in_bounds((minimo*100.0)/pd, (maximo*100.0)/pd);  % Accountable to randomly choose convinient values in boundaries
       totalpercent = totalpercent - aleatorio ;
       vetor(i) = pd * (aleatorio/100);
     end
