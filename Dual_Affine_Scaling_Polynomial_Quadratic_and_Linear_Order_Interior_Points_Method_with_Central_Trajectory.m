@@ -93,7 +93,7 @@ end
         else         
             if((VerificaPositividade(Ds{k}) == true))
                 resultado.Nome = VerificaNome(answer);
-                resultado.x = 'Problema Ilimitado';
+                resultado.x = 'Unlimited Problem';
                 resultado.Iteracoe = k-1;
                 flag = true;
             else
@@ -128,12 +128,12 @@ end
  
  function result = VerificaNome(answer)
     if(answer == 1)
-        resposta = 'Algoritmo Dual Afim (PPQ)';
+        resposta = 'Dual Affine Scaling Polynomial Quadratic Order Method';
     else if (answer == 2)
-            resposta = 'Algoritmo Dual Afim (PPQ) Trajetoria Central';
+            resposta = 'Dual Affine Scaling Polynomial Quadratic Order Method with Central Trajectory';
         else
             if(answer == 3)
-                resposta = 'Algoritmo Dual Afim (PPL) Trajetoria Central';
+                resposta = 'Dual Affine Scaling Polynomial Linear Order Method with Central Trajectory';
             end
         end
     end
@@ -142,7 +142,7 @@ end
  
  function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar o Algoritmo \nDigite 1 se deseja resolver pelo metodo de polinomio ordem quadratica ou 2 por metodo de polinomio de ordem N-dimensional: \n');
+       answer = input('Please choose carefully the desirable method by \n pressing 1 for polynomial quadratic order method \n pressing 2 for N-dimensional polynomial quadratic order method: \n');
     end
     result = answer;
  end
