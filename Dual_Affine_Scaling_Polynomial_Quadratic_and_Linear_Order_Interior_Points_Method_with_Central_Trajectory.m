@@ -2,7 +2,7 @@
 %                                                                         %
 %                                                                         %
 %                 DUAL AFFINE SCALING INTERIOR-POINTS METHOD              %
-%             (polynomial quadratic order with Central Trajectory)        % 
+%         (polynomial quadratic/linear order with Central Trajectory)     % 
 %                                                                         %
 %                                                                         %
 %                                                                         %
