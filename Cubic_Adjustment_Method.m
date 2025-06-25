@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                         CUBIC ADJUSTMENT METHOD                         %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = Ajuste_Cubico()
   clear all;
   clc;
@@ -13,7 +17,7 @@ function result = Ajuste_Cubico()
   
   E=0.2;
   k = 1;
-  metodo.nome = 'Ajuste Cubico';
+  metodo.nome = 'Cubic Adjustment Method';
   metodo.x(k)=a; 
   metodo.x(k+1)=b;
   metodo.derivadas(k) = deriva_objetivo(metodo.x(k));
