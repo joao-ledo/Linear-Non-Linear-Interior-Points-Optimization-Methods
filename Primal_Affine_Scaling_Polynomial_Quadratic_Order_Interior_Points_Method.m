@@ -1,7 +1,7 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%        PRIMAL AFFINE SCALING CONVEX QUADRATIC INTERIOR-POINT METHOD     %
+% PRIMAL AFFINE SCALING POLYNOMIAL QUADRATIC ORDER INTERIOR-POINTS METHOD %
 %                                                                         %
 %                                                                         %
 %                                          Developed by:                  % 
@@ -12,19 +12,19 @@ function result = PrimalAfimPPQ()
     clear all;
     clc;
     format long;      
-    data = loadInputData(); % Carregar os dados de entrada.
-    result = solvePrimalAfimPPQ(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q); % Cria a Instancia que resolve juntamento com os dados
+    data = loadInputData(); % Load input data
+    result = solvePrimalAfimPPQ(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q); % Creates the instances and solve it by loading the input data
 end
 
 %_________________________________________________________________________%
- function result = loadInputData() % Local onde se carregam as informacoes
+ function result = loadInputData() % Load input data function
     resultado.Erro{1} = 10^-4;
     resultado.Erro{2} = 10^-5;
     resultado.Erro{3} = 10^-3;
     
     resultado.C = [-2; 0; 0; 0; 0];%[1; 2; -3];
     resultado.C_quadratic = [2; 3; 5];
-    resultado.A = [1, -1, 1, 0, 0; 0, -1, 0, 1, 0; 0, 1, 0, 0, 1];   % <------------- Problema 2
+    resultado.A = [1, -1, 1, 0, 0; 0, -1, 0, 1, 0; 0, 1, 0, 0, 1];   % <------------- Problem 2
     resultado.b = [15; -2; 15];%[5; 10];
 
     resultado.pontoInicial{2} = [2; 4; 17; 2; 11];%[10; 4; 9; 2; 11];%[10; 3; 8; 1; 12];%[3; 2; 8];
@@ -45,7 +45,7 @@ end
    x{k} = pontoInicial{1};
    Fo{k} = FuncaoObjetivo(x{k});%calculoFO(x{k}, C, C_quadratic);
    if((VerificaEquacao(A, x{k}, b) == true) && (verificanegatividade(x{k}) == false))
-       resultado.Nome = 'Algoritmo Primal Afim (PPQ)';
+       resultado.Nome = 'Primal Affine Polynomial Quadratic Order Interior-Points Method';
        resultado.Fo = Fo;
        resultado.x = x;
        resultado.Iteracoe = k-1;
@@ -53,7 +53,7 @@ end
    else
        x{k} = pontoInicial{2};
    end
-%    answer = input('Digite 1 se deseja resolver pelo metodo de polinomio ordem quadratica ou 2 por metodo de polinomio de ordem N-dimensional: \n');
+%    answer = input('Type 1 if wants to solve using polinomial quadratic order or 2 for using polynomial quadratic order N-dimensional: \n');
 %    answer = VerificaOpcao(answer);
 %    VerificaOpcao(answer);
    while(flag == false)
@@ -64,7 +64,7 @@ end
         w{k} = Calcula_W(A, H{k}, Q{k}, x{k}, C);
         s{k} = Calcula_S(Q{k}, x{k}, C, A, w{k});
         if((VerificaErro(x{k}, s{k}, Erro) == true) && (VerificaPositividade(x{k})== true) && (VerificaPositividade(s{k})== true) && ((factbilidadePrimal(A, x{k}, b, ErroPrimal) == true) && (factibilidadeDual(s{k}, Q{k}, x{k}, C, ErroDual) == true)))
-            resultado.Nome = 'Algoritmo Primal Afim (PPQ)';
+            resultado.Nome = 'Primal Affine Polynomial Quadratic Order Interior-Points Method';
             resultado.Fo = Fo;
             resultado.Q = Q;
             resultado.x = x;
@@ -78,13 +78,13 @@ end
         else
             Dx{k} = Direcao(H{k}, s{k});
             if((VerificaPositividade(Dx{k}) == true))
-                resultado.Nome = 'Algoritmo Primal Afim (PPQ)';
-                resultado.x = 'Problema Ilimitado';
+                resultado.Nome = 'Primal Affine Polynomial Quadratic Order Interior-Points Method';
+                resultado.x = 'Unlimited Problem';
                 resultado.Iteracoe = k-1;
                 flag = true;
             else
                 if((VerificaMenorErro(Dx{k}, Erro) == true) && ((VerificaPositividade(x{k}) == true) || (VerificaPositividade(s{k}) == true)))
-                    resultado.Nome = 'Algoritmo Primal Afim (PPQ)';
+                    resultado.Nome = 'Primal Affine Polynomial Quadratic Order Interior-Points Method';
                     resultado.Fo = Fo;
                     resultado.Q = Q;
                     resultado.x = x;
@@ -113,7 +113,7 @@ end
  
  function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar o Algoritmo \nDigite 1 se deseja resolver pelo metodo de polinomio ordem quadratica ou 2 por metodo de polinomio de ordem N-dimensional: \n');
+       answer = input('Please choose carefully the desriable method by \n pressing 1 for polinomial quadratic order method \n pressing 2 for N-dimensional quadratic order method: \n');
     end
     result = answer;
  end
