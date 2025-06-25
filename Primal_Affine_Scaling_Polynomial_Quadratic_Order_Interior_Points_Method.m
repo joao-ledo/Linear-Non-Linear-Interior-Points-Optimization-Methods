@@ -53,7 +53,7 @@ end
    else
        x{k} = pontoInicial{2};
    end
-%    answer = input('Type 1 if wants to solve using polinomial quadratic order or 2 for using polynomial quadratic order N-dimensional: \n');
+%    answer = input('Type 1 if wants to solve using polynomial quadratic order or 2 for using polynomial quadratic order N-dimensional: \n');
 %    answer = VerificaOpcao(answer);
 %    VerificaOpcao(answer);
    while(flag == false)
