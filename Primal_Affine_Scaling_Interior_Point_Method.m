@@ -13,7 +13,7 @@ function result = PrimalAfim()
     clc;
     format long;      
     data = loadInputData(); % Load the input data
-    result = solvePrimalAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.answer, data.Mi); % Cria a Instancia que resolve juntamento com os dados
+    result = solvePrimalAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.answer, data.Mi); % Creates the instances and solve it by loading the input data
 end
 
 %_________________________________________________________________________%
