@@ -1,7 +1,7 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%                      PRIMAL AFIM ALGORITHM (PPQ)                        %
+%        PRIMAL AFFINE SCALING CONVEX QUADRATIC INTERIOR-POINT METHOD     %
 %                                                                         %
 %                                                                         %
 %                                          Developed by:                  % 
