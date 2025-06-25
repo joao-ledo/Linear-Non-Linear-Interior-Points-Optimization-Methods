@@ -1,7 +1,9 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%                      PRIMAL DUAL ALGORITHM (PPQ)                        %
+%                 DUAL AFFINE SCALING INTERIOR-POINTS METHOD              %
+%             (polynomial quadratic order with Central Trajectory)        % 
+%                                                                         %
 %                                                                         %
 %                                                                         %
 %                                          Developed by:                  % 
@@ -12,19 +14,19 @@ function result = DualAfimPPQTragetoriaCentral()
     clear all;
     clc;
     format long;      
-    data = loadInputData(); % Carregar os dados de entrada.
-    result = solvePrimalAfimPPQ(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q, data.Sinicial, data.e, data.Mi, data.answer); % Cria a Instancia que resolve juntamento com os dados
+    data = loadInputData(); % Load the input data
+    result = solvePrimalAfimPPQ(data.A, data.C, data.C_quadratic, data.pontoInicial, data.Erro, data.b, data.Q, data.Sinicial, data.e, data.Mi, data.answer); % Creates the instances and solve it by loading the input data
 end
 
 %_________________________________________________________________________%
- function result = loadInputData() % Local onde se carregam as informacoes
+ function result = loadInputData() % Load the input data function
     resultado.Erro = 10^-1;
     resultado.Mi = 1;
     
    resultado.answer = 2;
     resultado.C = [4; -6];
     resultado.C_quadratic = [2; 3];
-    resultado.A = [-1, 1; -1, -1;1, 0;0, 1; -1, 0; 0, -1]; %<------------- Problema 2
+    resultado.A = [-1, 1; -1, -1;1, 0;0, 1; -1, 0; 0, -1]; %<------------- Problem 2
     resultado.b = [1; -1; 3; 2; 0; 0]; 
     resultado.Q = [4, 0; 0, 6];
     resultado.pontoInicial{1} = inv(-resultado.Q) * resultado.C;
@@ -35,7 +37,7 @@ end
 %     resultado.answer = 3;
 %     resultado.C = [-2; -1];
 %     resultado.C_quadratic = [2; 3];
-%     resultado.A = [-1, 1; 1, 0; 0, 1; -1, 0; 0, -1]; %<------------- Problema 2
+%     resultado.A = [-1, 1; 1, 0; 0, 1; -1, 0; 0, -1]; %<------------- Problem 2
 %     resultado.b = [1; 3; 2; 0; 0]; 
 %     resultado.Q = [0, 0; 0, 0];
 %     resultado.pontoInicial{1} = inv(-resultado.Q) * resultado.C;
