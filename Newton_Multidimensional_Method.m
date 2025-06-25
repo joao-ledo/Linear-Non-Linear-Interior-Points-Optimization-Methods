@@ -1,5 +1,5 @@
 %_________________________________________________________________________%
-%                      MULTIDIMENSIONAL NEWTON METHOD                     %
+%                      NEWTON MULTIDIMENSIONAL METHOD                     %
 %__*Developed by Joao Augusto Silva Ledo*_________________________________%
 
 function result = NewtonMulti()
