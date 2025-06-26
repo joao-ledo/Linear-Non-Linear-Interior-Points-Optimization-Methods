@@ -339,23 +339,23 @@ end
  
 function result = VerificaNome(resposta)
     if(resposta.answer1 == 1)
-        resultado = 'Algoritmo Primal-Dual Afim Barreira Logaritma para PPQ';
+        resultado = 'Primal Dual Affine Logarithmic Barrier Method for Polynomial Quadratic Order Problems';
     else
         if (resposta.answer1 == 2)
             if(resposta.answer2 == 1)
-                resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor de Mehotra para PPQ';
+                resultado = 'Primal Dual Affine Mehrotra Predictor and Corrector Method for Polynomial Quadratic Order Problems';
             else
                 if(resposta.answer2 == 2)
-                     resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor de Tanabi para PPQ';
+                     resultado = 'Primal Dual Affine Tanabe-Todd-Ye Predictor and Corrector Method for Polynomial Quadratic Order Problems';
                 else
                     if(resposta.answer2 == 3)
-                        resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor de Gondzio para PPQ';
+                        resultado = 'Primal Dual Affine Gondzio Predictor and Corrector Method for Polynomial Quadratic Order Problems';
                     else
                         if(resposta.answer2 == 4)
-                            resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor Misto para PPQ';
+                            resultado = 'Primal Dual Affine Mixed Predictor and Corrector Method for Polynomial Quadratic Order Problems';
                         else
                             if(resposta.answer2 == 5)
-                                resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor Misto com Busca Unidimensional de Fibonacci para o Passo Previsor para PPQ';
+                                resultado = 'Primal Dual Affine Mixed Predictor and Corrector Method with Unidimensional Fibonacci Search for Polynomial Quadratic Order Problems';
                             end
                         end
                     end
@@ -363,7 +363,7 @@ function result = VerificaNome(resposta)
             end 
         else
             if (resposta.answer1 == 3)
-                resultado = 'Algoritmo Primal-Dual Afim Barreira Logaritma para PNL (Rosenbrock)';
+                resultado = 'Primal Dual Affine Logarithmic Barrier Method for Polynomial Quadratic Linear Problems with Rosenbrock Search';
             end
         end
     end
