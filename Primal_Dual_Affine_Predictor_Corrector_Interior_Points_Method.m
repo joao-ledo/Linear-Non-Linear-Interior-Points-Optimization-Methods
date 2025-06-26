@@ -376,14 +376,14 @@ end
 
 function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar the Solution Method: \n 1-Primal-Dual \n 2-Primal Dual com Previsor-Corretor \n');
+       answer = input('Please choose carefully the desirable Solution Method: \n 1-Primal-Dual \n 2-Primal Dual com Previsor-Corretor \n');
     end
     result = answer;
 end
 
 function result = VerificaOpcaoMetodo(answer)
     while((answer ~= 1) && (answer ~= 2) && (answer ~= 3) && (answer ~= 4))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar the Predictor and Corrector Method: \n 1-Mehrotra \n 2-Tanabe-Todd-Ye \n 3-Gondzio \n 4-Mixed \n');
+       answer = input('Please choose carefully the desirable Predictor and Corrector Method: \n 1-Mehrotra \n 2-Tanabe-Todd-Ye \n 3-Gondzio \n 4-Mixed \n');
     end
     result = answer;
 end 
