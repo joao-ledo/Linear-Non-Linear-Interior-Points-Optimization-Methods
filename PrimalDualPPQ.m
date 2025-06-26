@@ -1,8 +1,10 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%                        PRIMAL DUAL AFIM ALGORITHM                       %
-%                           (PPQ, PNL, Rosenbrock)                        %
+%        PRIMAL DUAL AFFINE PREDICTOR CORRECTOR INTERIOR-POINTS METHOD    %
+%          (Polynomial Quadratic/linear Order and Rosenbrock Search)      % 
+%                                                                         %
+%                                                                         %
 %                                                                         %
 %                                          Developed by:                  % 
 %                                                 Joao Augusto Silva Ledo %
@@ -12,18 +14,18 @@ function result = PrimalDualPPQ()
     clear all;
     clc;
     format long;      
-    data = loadInputData(); % Carregar os dados de entrada.
-    result = solveDualAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.Sinicial, data.b, data.Mi, data.w, data.Q, data.C_quadratic, data.constant); % Cria a Instancia que resolve juntamento com os dados
+    data = loadInputData(); % Load input data
+    result = solveDualAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.Sinicial, data.b, data.Mi, data.w, data.Q, data.C_quadratic, data.constant); % Creates the instances and solve it by loading the input data
 end
 
 %_________________________________________________________________________%
- function result = loadInputData() % Local onde se carregam as informacoes
+ function result = loadInputData() % Load input data function
         
 %         resultado.Erro{1} = 10^-2;
 %         resultado.Erro{2} = 10^-2;
 %         resultado.Erro{3} = 10^-2;  
 %         resultado.C = [1; 2; -3];
-%         resultado.C_quadratic = [2; 3; 5]; %<------------- TP8 Normal
+%         resultado.C_quadratic = [2; 3; 5]; 
 %         resultado.constant = [0; 0; 0];
 %         resultado.A = [1, 1, 0; 0, 1, 1];
 %         resultado.b = [5; 10];
