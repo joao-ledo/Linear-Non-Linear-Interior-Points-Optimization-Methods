@@ -376,7 +376,7 @@ end
 
 function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2))
-       answer = input('Please choose carefully the desirable Solution Method: \n 1-Primal-Dual \n 2-Primal Dual com Previsor-Corretor \n');
+       answer = input('Please choose carefully the desirable Solution Method: \n 1-Primal Dual Method \n 2-Primal Dual with Predictor and Corrector Method \n');
     end
     result = answer;
 end
