@@ -1,3 +1,7 @@
+%_________________________________________________________________________%
+%                          DUAL LAGRANGIAN METHOD                         %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
 function result = DualLagrangiano()
   clear all;
   clc; 
@@ -16,7 +20,7 @@ function result = DualLagrangiano()
       grad{contador+1} = gradiente(x{contador+1},lambda(contador+1));    
       contador = contador + 1;
   end 
-  resultado.nome = 'Metodo Dual-Lagrangiano';
+  resultado.nome = 'Dual Lagrangian Method';
   resultado.valor = x{contador};
   resultado.iteracoes = contador;
 result = resultado;
@@ -88,7 +92,7 @@ function result = fibonacci(d,x,lambda)
   result = saida;
 end
 
-function result = objetivo(alpha, variavel, z, lambda) % recebe alpha, recebe dire??o, recebe z = [x,y]
+function result = objetivo(alpha, variavel, z, lambda)
     x1 = z(1) + alpha*variavel(1);
     x2 = z(2) + alpha*variavel(2);
     result = x1^2 + x2^2 + lambda*(x1 + x2 - 1);
