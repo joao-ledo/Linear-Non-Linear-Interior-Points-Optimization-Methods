@@ -293,7 +293,7 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi)
         resultado.mi = resultado.x'*resultado.s;
         resultado.v = constroiV(resultado.mi, e, X, S) - diag(resultado.Dx) * diag(resultado.Ds) * e;
     end
-    if(resposta == 4) %Misto
+    if(resposta == 4) % Mixed
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*v));
         resultado.Dx = teta*(A'*resultado.Dw - u + inv(X)*v);
         resultado.Ds = -inv(X)*(v - S*resultado.Dx);
@@ -309,7 +309,7 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi)
 end
 
 function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, mi)
-    if(resposta == 1) %Mehotra
+    if(resposta == 1) % Mehrotra
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi);
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
         resultado.Dx = teta*(A'*resultado.Dw-u+inv(X)*previsor.v);
@@ -318,7 +318,7 @@ function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, m
     end
     if(resposta == 2)
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi);
-        if(rem(k,2) ~= 0) %Tanabi       
+        if(rem(k,2) ~= 0) % Tanabe-Todd-Ye    
             resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
             resultado.Dx = teta*(A'*resultado.Dw-u+inv(X)*previsor.v);
             resultado.Ds = inv(X)*(previsor.v-S*resultado.Dx);
@@ -331,7 +331,7 @@ function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, m
         end
         
     end
-    if(resposta == 3) %Gondzio
+    if(resposta == 3) % Gondzio
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi);
         correction.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
         correction.Dx = teta*(A'*correction.Dw-u+inv(X)*previsor.v);
@@ -354,7 +354,7 @@ function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, m
                 resultado.Prev = previsor;
         end
     end
-    if(resposta == 4) %Mixed
+    if(resposta == 4) % Mixed
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi);
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
         resultado.Dx = teta*(A'*resultado.Dw-u+inv(X)*previsor.v);
