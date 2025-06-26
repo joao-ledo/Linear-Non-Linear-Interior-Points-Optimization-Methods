@@ -1,3 +1,8 @@
+%_________________________________________________________________________%
+%                              PENALTY METHOD                            %
+%__*Developed by Joao Augusto Silva Ledo*_________________________________%
+
+
 function result = penalidade()
     clear all;
     clc; 
