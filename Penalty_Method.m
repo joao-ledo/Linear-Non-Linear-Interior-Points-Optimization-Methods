@@ -24,14 +24,14 @@ function result = penalidade()
       grad{k+1} = gradiente(x{k+1},mi(k+1));
       alpha(k+1) = fibonacci(-grad{k+1}, x{k+1}, mi(k+1));
       
-      if (mi(k)*alpha(k+1) < epslon)%Passo essencial que determina quando parar pois encontrou o ponto que satisfa?a a restricao.
+      if (mi(k)*alpha(k+1) < epslon) % Determine when to stop based on finding the feasible point that satisfies the constraint
           compara = 1*10^-4;
       end
       k = k + 1;
       
   end 
   valor = [x{k}(1),x{k}(2)];
-  resultado.nome = 'Metodo da Penalidade';
+  resultado.nome = 'Penalty Method';
   resultado.valor = valor;
   resultado.alpha = alpha(k);
   resultado.mi = mi(k);
