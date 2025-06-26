@@ -14,8 +14,8 @@ function result = PrimalDualPPL()
     clear all;
     clc;
     format long;      
-    data = loadInputData(); % Carregar os dados de entrada.
-    result = solveDualAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.Sinicial, data.b, data.Mi, data.w); % Cria a Instancia que resolve juntamente com os dados
+    data = loadInputData(); % Load input data
+    result = solveDualAfim(data.A, data.C, data.pontoInicial, data.Erro, data.e, data.Sinicial, data.b, data.Mi, data.w); % Creates the instances and solve it by loading the input data
 end
 
 %_________________________________________________________________________%
