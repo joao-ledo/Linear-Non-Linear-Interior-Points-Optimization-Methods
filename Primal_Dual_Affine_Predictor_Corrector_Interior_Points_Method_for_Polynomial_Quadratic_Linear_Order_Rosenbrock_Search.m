@@ -579,7 +579,7 @@ function result = ProximaBarreiraPrevCorr(x, s)
 end
  
 function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, mi, C_quadratic, constant, minBuscaUni, maxBuscaUni, precisao)
-    if(resposta.answer2 == 1) %Mehotra
+    if(resposta.answer2 == 1) % Mehrotra
         resultado.Dw = inv(A*teta*A')*(t + A*teta*u);
         resultado.Dx = teta*(A'*resultado.Dw - u);
         resultado.Ds = -inv(X)*S*resultado.Dx;
@@ -591,7 +591,7 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, m
         resultado.mi = ProximaBarreiraPrevCorr(resultado.x, resultado.s);
         resultado.v = constroiV(resultado.mi, e, X, S) - diag(resultado.Dx) * diag(resultado.Ds) * e;
     end
-    if(resposta.answer2 == 2) %Tanabi
+    if(resposta.answer2 == 2) % Tanabe-Todd-Ye
         resultado.Dw = inv(A*teta*A')*(t + A*teta*u);
         resultado.Dx = teta*(A'*resultado.Dw - u);
         resultado.Ds = -inv(X)*S*resultado.Dx;
@@ -603,7 +603,7 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, m
         resultado.mi = ProximaBarreiraPrevCorr(resultado.x, resultado.s);
         resultado.v = constroiV(resultado.mi, e, X, S);
     end
-    if(resposta.answer2 == 3) %Gondzio
+    if(resposta.answer2 == 3) % Gondzio
         resultado.Dw = inv(A*teta*A')*(t + A*teta*u);
         resultado.Dx = teta*(A'*resultado.Dw - u);
         resultado.Ds = -inv(X)*S*resultado.Dx;
@@ -615,7 +615,7 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, m
         resultado.mi = resultado.x'*resultado.s;
         resultado.v = constroiV(resultado.mi, e, X, S) - diag(resultado.Dx) * diag(resultado.Ds) * e;
     end
-    if(resposta.answer2 == 4) %Misto
+    if(resposta.answer2 == 4) % Mixed
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*v));
         resultado.Dx = teta*(A'*resultado.Dw - u + inv(X)*v);
         resultado.Ds = inv(X)*(v - S*resultado.Dx);
@@ -627,7 +627,7 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, m
         resultado.mi = ProximaBarreiraPrevCorr(resultado.x, resultado.s);
         resultado.v = constroiV(resultado.mi, e, X, S) - diag(resultado.Dx) * diag(resultado.Ds) * e;
     end
-    if(resposta.answer2 == 5) %Seminario    
+    if(resposta.answer2 == 5) % Mixed with Unidimensional Fibonacci Search    
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*v));
         resultado.Dx = teta*(A'*resultado.Dw - u + inv(X)*v);
         resultado.Ds = inv(X)*(v - S*resultado.Dx);      
@@ -643,14 +643,14 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, m
 end
 
 function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, Q, C, mi, C_quadratic, constant, minBuscaUni, maxBuscaUni, precisao)
-    if(resposta.answer2 == 1) %Mehotra
+    if(resposta.answer2 == 1) % Mehrotra
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, mi, C_quadratic, constant, minBuscaUni, maxBuscaUni, precisao);
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
         resultado.Dx = teta*(A'*resultado.Dw-u+inv(X)*previsor.v);
         resultado.Ds = inv(X)*(previsor.v-S*resultado.Dx);
         resultado.Prev = previsor;
     end
-    if(resposta.answer2 == 2)%Tanabi 
+    if(resposta.answer2 == 2)% Tanabe-Todd-Ye 
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, mi, C_quadratic, constant, minBuscaUni, maxBuscaUni, precisao);
         if(rem(k,2) ~= 0)       
             resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
@@ -665,7 +665,7 @@ function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, Q
         end
         
     end
-    if(resposta.answer2 == 3) %Gondzio
+    if(resposta.answer2 == 3) % Gondzio
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, mi, C_quadratic, constant, minBuscaUni, maxBuscaUni, precisao);
         correction.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
         correction.Dx = teta*(A'*correction.Dw-u+inv(X)*previsor.v);
@@ -688,14 +688,14 @@ function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, Q
             resultado.Prev = previsor;
         end
     end
-    if(resposta.answer2 == 4) %Misto
+    if(resposta.answer2 == 4) % Mixed
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, mi, C_quadratic, constant, minBuscaUni, maxBuscaUni, precisao);
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
         resultado.Dx = teta*(A'*resultado.Dw-u+inv(X)*previsor.v);
         resultado.Ds = inv(X)*(previsor.v-S*resultado.Dx);
         resultado.Prev = previsor;
     end
-    if(resposta.answer2 == 5) %Seminario
+    if(resposta.answer2 == 5) % Mixed with Unidimensional Fibonacci Search
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, Q, C, mi, C_quadratic, constant, minBuscaUni, maxBuscaUni, precisao);
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
         resultado.Dx = teta*(A'*resultado.Dw-u+inv(X)*previsor.v);
@@ -706,9 +706,9 @@ function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, Q
 end
 
 function result = MinMaxBuscaUni()
-    resultado.min = input('Digite o valor de Minimo da Busca Unidimensional para o Passo Previsor:\n');
-    resultado.max = input('Digite o valor de Maximo da Busca Unidimensional para o Passo Previsor:\n');
-    resultado.Precisao = input('Digite o valor da Precisao da Busca Unidimensional para o Passo Previsor:\n');
+    resultado.min = input('Please type the minimum value for predictor step in the unidimensional search:\n');
+    resultado.max = input('Please type the maximum value for predictor step in the unidimensional search:\n');
+    resultado.Precisao = input('Please type the precision value for predictor step in the unidimensional search:\n');
     result = resultado;
 end
  
@@ -754,10 +754,9 @@ function result = EscolheMetodoResolucao(A, e, x, w, s, t, u, v, p, teta, X, S, 
 end
 
 function result = fibonacci(d,x, C, C_quadratic, constant, min, max, precisao, answer)
-% o intuito dessa parte e descobrir o alpha, a e b sao pontos que entre
-% eles exista um alpha, o objetivo dessa parte da busca unidimensional e
-% encontrar o minimo da funcao f(xk + alpha*dxk), alimentando o dxk como
-% ogradiente da funcao principal.
+% This portion aims to find alpha | alpha is in between a and b points
+% Also the goal in this unidimensional search is finding function f(xk + alpha*dk) minimum
+% by feeding dk as the main function gradient
 %   a=0;
 %   b=0.9995;
 %   a=-1;
