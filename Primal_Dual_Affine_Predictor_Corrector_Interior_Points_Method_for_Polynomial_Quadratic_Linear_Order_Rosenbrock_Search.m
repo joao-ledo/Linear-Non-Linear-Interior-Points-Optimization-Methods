@@ -713,10 +713,10 @@ function result = MinMaxBuscaUni()
 end
  
 function result = ChooseSolutionMethod()
-    resultado.answer1 = input('Escolha o Metodo de Resolucao: \n 1-Primal-Dual PPQ \n 2-Primal Dual com Previsor-Corretor \n 3-Primal-Dual PNL (Rosenbrock) \n');
+    resultado.answer1 = input('Select the Solution Method: \n 1-Primal Dual Method \n 2-Primal Dual with Predictor and Corrector Method \n 3-Primal Dual Method for Polynomial Linear Order with Rosenbrock Search \n');
     resultado.answer1 = VerificaOpcao(resultado.answer1);
     if(resultado.answer1 == 2)
-        resultado.answer2 = input('Escolha o Metodo Previsor-Corretor: \n 1-Mehotra \n 2-Tanabi \n 3-Gondzio \n 4-Misto \n 5-Misto com Busca Unidimensional de Fibonacci para o Passo Previsor \n ');
+        resultado.answer2 = input('Select the Predictor and Corrector Method: \n 1-Mehrotra \n 2-Tanabe-Todd-Ye \n 3-Gondzio \n 4-Mixed \n 5-Mixed with Unidimensional Fibonacci Search for the Predictor Step \n ');
         resultado.answer2 = VerificaOpcaoMetodo(resultado.answer2); 
     end
     result = resultado;
@@ -724,14 +724,14 @@ end
 
 function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2) && (answer ~= 3))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar o Metodo de Resolucao: \n 1-Primal-Dual PPQ \n 2-Primal Dual com Previsor-Corretor \n 3-Primal-Dual PNL (Rosenbrock) \n');
+       answer = input('Please choose carefully the desirable Solution Method: \n 1-Primal Dual Method \n 2-Primal Dual with Predictor and Corrector Method \n 3-Primal Dual Method for Polynomial Linear Order with Rosenbrock Search \n');
     end
     result = answer;
 end
 
 function result = VerificaOpcaoMetodo(answer)
     while((answer ~= 1) && (answer ~= 2) && (answer ~= 3) && (answer ~= 4) && (answer ~= 5))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar o Metodo Previsor-Corretor: \n 1-Mehotra \n 2-Tanabi \n 3-Gondzio \n 4-Misto \n 5-Misto com Busca Unidimensional de Fibonacci para o Passo Previsor \n');
+       answer = input('Please choose carefully the desirable Predictor and Corrector Method: \n 1-Mehrotra \n 2-Tanabe-Todd-Ye \n 3-Gondzio \n 4-Mixed \n 5-Mixed with Unidimensional Fibonacci Search for the Predictor Step \n');
     end
     result = answer;
 end 
