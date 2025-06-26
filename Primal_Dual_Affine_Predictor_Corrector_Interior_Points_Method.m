@@ -19,7 +19,7 @@ function result = PrimalDualPPL()
 end
 
 %_________________________________________________________________________%
- function result = loadInputData() % Local onde se carregam as informacoes
+ function result = loadInputData() % Load input data function
  
         resultado.Erro{1} = 10^-2;
         resultado.Erro{2} = 10^-2;
