@@ -1,10 +1,12 @@
 %_________________________________________________________________________%
 %                                                                         %
 %                                                                         %
-%                        PRIMAL DUAL AFIM ALGORITHM                       %
-%                         (PPL e Previsor Corretor)                       %
+%        PRIMAL DUAL AFFINE PREDICTOR CORRECTOR INTERIOR-POINTS METHOD    %
+%                         (polynomial linear order)                       % 
 %                                                                         %
-%                                          Developed by:                  %
+%                                                                         %
+%                                                                         %
+%                                          Developed by:                  % 
 %                                                 Joao Augusto Silva Ledo %
 %_________________________________________________________________________%
 
@@ -23,14 +25,14 @@ end
         resultado.Erro{2} = 10^-2;
         resultado.Erro{3} = 10^-1;   
         
-%         resultado.C = [-2; 1; 0; 0];      %<---------- TP7 exercicio 1
+%         resultado.C = [-2; 1; 0; 0];      %<---------- Problem 1
 %         resultado.A = [1, -1, 1, 0; 0, 1, 0, 1];
 %         resultado.b = [15; 15];
 %         resultado.pontoInicial = [0.5; 1; 1; 0.5];
 %         resultado.Sinicial = [1; 1; 1; 1];
 %         resultado.w = [0;0];
 
-        resultado.C = [-1; -2; 0; 0];      %<---------- TP7 exercicio 2 (Mehotra)
+        resultado.C = [-1; -2; 0; 0];      %<---------- Problem 2 (Mehrotra)
         resultado.A = [-1, 1, 1, 0; 1, 1, 0, 1];
         resultado.b = [1; 5];
         resultado.pontoInicial = [0.5; 1; 1; 0.5];
@@ -122,20 +124,20 @@ end
  
 function result = VerificaNome(resposta)
     if(resposta.answer1 == 1)
-        resultado = 'Algoritmo Primal-Dual Afim Barreira Logaritma para PPL';
+        resultado = 'Primal Dual Affine Logarithmic Barrier Method for Polynomial Linear Order Problems';
     else
         if (resposta.answer1 == 2)
             if(resposta.answer2 == 1)
-                resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor de Mehotra para PPL';
+                resultado = 'Primal Dual Affine Mehrotra Predictor and Corrector Method for Polynomial Linear Order Problems';
             else
                 if(resposta.answer2 == 2)
-                     resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor de Tanabi para PPL';
+                     resultado = 'Primal Dual Affine Tanabe-Todd-Ye Predictor and Corrector Method for Polynomial Linear Order Problems';
                 else
                     if(resposta.answer2 == 3)
-                        resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor de Gondzio para PPL';
+                        resultado = 'Primal Dual Affine Gondzio Predictor and Corrector Method for Polynomial Linear Order Problems';
                     else
                         if(resposta.answer2 == 4)
-                            resultado = 'Algoritmo Primal-Dual Afim com Previsor-Corretor de Misto para PPL';
+                            resultado = 'Primal Dual Affine Mixed Predictor and Corrector Method for Polynomial Linear Order Problems';
                         end
                     end
                 end
@@ -255,7 +257,7 @@ function result = ProximaBarreiraPrevCorr(mi, x, s)
 end
  
 function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi)
-    if(resposta == 1) %Mehotra
+    if(resposta == 1) % Mehrotra
         resultado.Dw = inv(A*teta*A')*(t + A*teta*u);
         resultado.Dx = teta*(A'*resultado.Dw - u);
         resultado.Ds = -inv(X)*S*resultado.Dx;
@@ -267,7 +269,7 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi)
         resultado.mi = ProximaBarreiraPrevCorr(mi, resultado.x, resultado.s);
         resultado.v = constroiV(resultado.mi, e, X, S) - diag(resultado.Dx) * diag(resultado.Ds) * e;
     end
-    if(resposta == 2) %Tanabi
+    if(resposta == 2) % Tanabe-Todd-Ye
         resultado.Dw = inv(A*teta*A')*(t + A*teta*u);
         resultado.Dx = teta*(A'*resultado.Dw - u);
         resultado.Ds = -inv(X)*S*resultado.Dx;
@@ -279,7 +281,7 @@ function result = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi)
         resultado.mi = ProximaBarreiraPrevCorr(mi, resultado.x, resultado.s);
         resultado.v = constroiV(resultado.mi, e, X, S);
     end
-    if(resposta == 3) %Gondzio
+    if(resposta == 3) % Gondzio
         resultado.Dw = inv(A*teta*A')*(t + A*teta*u);
         resultado.Dx = teta*(A'*resultado.Dw - u);
         resultado.Ds = -inv(X)*S*resultado.Dx;
@@ -352,7 +354,7 @@ function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, m
                 resultado.Prev = previsor;
         end
     end
-    if(resposta == 4) %Misto
+    if(resposta == 4) %Mixed
         previsor = Previsor(A, e, x, w, s, t, u, v, teta, X, S, resposta, mi);
         resultado.Dw = inv(A*teta*A')*(t + A*teta*(u - inv(X)*previsor.v));
         resultado.Dx = teta*(A'*resultado.Dw-u+inv(X)*previsor.v);
@@ -363,10 +365,10 @@ function result = Corretor(A, e, x, w, s, t, u, v, teta, X, S, resposta, k, p, m
 end
  
 function result = ChoseSolutionMethod()
-    resultado.answer1 = input('Escolha o Metodo de Resolucao: \n 1-Primal-Dual \n 2-Primal Dual com Previsor-Corretor \n');
+    resultado.answer1 = input('Select the Solution Method: \n 1-Primal Dual Method \n 2-Primal Dual with Predictor and Corrector Method \n');
     resultado.answer1 = VerificaOpcao(resultado.answer1);
     if(resultado.answer1 == 2)
-        resultado.answer2 = input('Escolha o Metodo Previsor-Corretor: \n 1-Mehotra \n 2-Tanabi \n 3-Gondzio \n 4-Misto \n');
+        resultado.answer2 = input('Select the Predictor and Corrector Method: \n 1-Mehrotra \n 2-Tanabe-Todd-Ye \n 3-Gondzio \n 4-Mixed \n');
         resultado.answer2 = VerificaOpcaoMetodo(resultado.answer2); 
     end
     result = resultado;
@@ -374,14 +376,14 @@ end
 
 function result = VerificaOpcao(answer)
     while((answer ~= 1) && (answer ~= 2))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar o Metodo de Resolucao: \n 1-Primal-Dual \n 2-Primal Dual com Previsor-Corretor \n');
+       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar the Solution Method: \n 1-Primal-Dual \n 2-Primal Dual com Previsor-Corretor \n');
     end
     result = answer;
 end
 
 function result = VerificaOpcaoMetodo(answer)
     while((answer ~= 1) && (answer ~= 2) && (answer ~= 3) && (answer ~= 4))
-       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar o Metodo Previsor-Corretor: \n 1-Mehotra \n 2-Tanabi \n 3-Gondzio \n 4-Misto \n');
+       answer = input('Favor Escolher corretamente o metodo pelo qual deseja Executar the Predictor and Corrector Method: \n 1-Mehrotra \n 2-Tanabe-Todd-Ye \n 3-Gondzio \n 4-Mixed \n');
     end
     result = answer;
 end 
